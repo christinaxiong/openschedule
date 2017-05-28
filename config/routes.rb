@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Calendar_entry resource:
+  # CREATE
+  get "/calendar_entries/new", :controller => "calendar_entries", :action => "new"
+  post "/create_calendar_entry", :controller => "calendar_entries", :action => "create"
+
+  # READ
+  get "/calendar_entries", :controller => "calendar_entries", :action => "index"
+  get "/calendar_entries/:id", :controller => "calendar_entries", :action => "show"
+
+  # UPDATE
+  get "/calendar_entries/:id/edit", :controller => "calendar_entries", :action => "edit"
+  post "/update_calendar_entry/:id", :controller => "calendar_entries", :action => "update"
+
+  # DELETE
+  get "/delete_calendar_entry/:id", :controller => "calendar_entries", :action => "destroy"
+  #------------------------------
+
   # Routes for the Contact resource:
   # CREATE
   get "/contacts/new", :controller => "contacts", :action => "new"
