@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   def index
-    @contacts = Contact.all
+    @contacts = Contact.where({:parent_id=>current_user.id})
 
     render("contacts/index.html.erb")
   end
@@ -8,7 +8,11 @@ class ContactsController < ApplicationController
   def show
     @contact = Contact.find(params[:id])
 
-    render("contacts/show.html.erb")
+    if current_user.id != @contact.creator_id
+      redirect_to("/", :notice => "Not enough permissions.")
+    else
+      render("contacts/show.html.erb")
+    end
   end
 
   def new
@@ -20,10 +24,11 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new
 
-    @contact.contact_name = params[:contact_name]
-    @contact.contact_email = params[:contact_email]
-    @contact.contact_photo = params[:contact_photo]
-    @contact.user_id = params[:user_id]
+    @contact.name = params[:name]
+    @contact.email = params[:email]
+    @contact.photo = params[:photo]
+    @contact.parent_id = current_user.id
+    @contact.child_id = params[:child_id]
 
     save_status = @contact.save
 
@@ -37,35 +42,47 @@ class ContactsController < ApplicationController
   def edit
     @contact = Contact.find(params[:id])
 
-    render("contacts/edit.html.erb")
+    if current_user.id != @contact.creator_id
+      redirect_to("/", :notice => "Not enough permissions.")
+    else
+      render("contacts/edit.html.erb")
+    end
   end
 
   def update
     @contact = Contact.find(params[:id])
 
-    @contact.contact_name = params[:contact_name]
-    @contact.contact_email = params[:contact_email]
-    @contact.contact_photo = params[:contact_photo]
-    @contact.user_id = params[:user_id]
-
-    save_status = @contact.save
-
-    if save_status == true
-      redirect_to("/contacts/#{@contact.id}", :notice => "Contact updated successfully.")
+    if current_user.id != @contact.creator_id
+      redirect_to("/", :notice => "Not enough permissions.")
     else
-      render("contacts/edit.html.erb")
+      @contact.name = params[:name]
+      @contact.email = params[:email]
+      @contact.photo = params[:photo]
+      @contact.user_id = params[:user_id]
+
+      save_status = @contact.save
+
+      if save_status == true
+        redirect_to("/contacts/#{@contact.id}", :notice => "Contact updated successfully.")
+      else
+        render("contacts/edit.html.erb")
+      end
     end
   end
 
   def destroy
     @contact = Contact.find(params[:id])
 
-    @contact.destroy
-
-    if URI(request.referer).path == "/contacts/#{@contact.id}"
-      redirect_to("/", :notice => "Contact deleted.")
+    if current_user.id != @contact.creator_id
+      redirect_to("/", :notice => "Not enough permissions.")
     else
-      redirect_to(:back, :notice => "Contact deleted.")
+      @contact.destroy
+
+      if URI(request.referer).path == "/contacts/#{@contact.id}"
+        redirect_to("/", :notice => "Contact deleted.")
+      else
+        redirect_to(:back, :notice => "Contact deleted.")
+      end
     end
   end
 end

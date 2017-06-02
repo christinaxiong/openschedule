@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528061927) do
+ActiveRecord::Schema.define(version: 20170602070837) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer  "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "child_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "creator_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "location"
+    t.string   "location_address"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "isprivate",        default: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

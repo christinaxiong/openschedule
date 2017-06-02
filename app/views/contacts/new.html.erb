@@ -18,40 +18,40 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for contact_name -->
+      <!-- Label and input for child user id -->
       <div class="form-group">
-        <label for="contact_name" class="control-label">
-          Contact name
+        <label for="child_id" class="control-label">
+          User Id
         </label>
 
-        <input type="text" id="contact_name" name="contact_name" placeholder="Contact name" class="form-control" value="<%= @contact.contact_name %>">
+        <input type="text" id="child_id" name="child_id" placeholder="0" class="form-control" value="<%= @contact.child_id %>">
       </div>
 
-      <!-- Label and input for contact_email -->
+      <!-- Label and input for name -->
       <div class="form-group">
-        <label for="contact_email" class="control-label">
-          Contact email
+        <label for="name" class="control-label">
+          Name
         </label>
 
-        <input type="text" id="contact_email" name="contact_email" placeholder="Contact email" class="form-control" value="<%= @contact.contact_email %>">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @contact.name %>">
       </div>
 
-      <!-- Label and input for contact_photo -->
+      <!-- Label and input for email -->
       <div class="form-group">
-        <label for="contact_photo" class="control-label">
-          Contact photo
+        <label for="email" class="control-label">
+          Email
         </label>
 
-        <input type="text" id="contact_photo" name="contact_photo" placeholder="Contact photo" class="form-control" value="<%= @contact.contact_photo %>">
+        <input type="text" id="email" name="email" placeholder="Email" class="form-control" value="<%= @contact.email %>">
       </div>
 
-      <!-- Label and input for user_id -->
+      <!-- Label and input for photo -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
+        <label for="photo" class="control-label">
+          Photo
         </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @contact.user_id %>">
+        <input type="text" id="photo" name="photo" placeholder="Photo" class="form-control" value="<%= @contact.photo %>">
       </div>
 
       <button class="btn btn-success">

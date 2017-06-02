@@ -1,19 +1,25 @@
 Rails.application.routes.draw do
-  # Routes for the Calendar_entry resource:
+  #Routes for homepage:
+  get "/", :controller => "events", :action => "index"
+
+  # Routes for the Event resource:
   # CREATE
-  get "/calendar_entries/new", :controller => "calendar_entries", :action => "new"
-  post "/create_calendar_entry", :controller => "calendar_entries", :action => "create"
+  get "/events/new", :controller => "events", :action => "new"
+  post "/create_event", :controller => "events", :action => "create"
 
   # READ
-  get "/calendar_entries", :controller => "calendar_entries", :action => "index"
-  get "/calendar_entries/:id", :controller => "calendar_entries", :action => "show"
+  get "/events", :controller => "events", :action => "index"
+  get "/events/:id", :controller => "events", :action => "show"
 
   # UPDATE
-  get "/calendar_entries/:id/edit", :controller => "calendar_entries", :action => "edit"
-  post "/update_calendar_entry/:id", :controller => "calendar_entries", :action => "update"
+  get "/events/:id/edit", :controller => "events", :action => "edit"
+  post "/update_event/:id", :controller => "events", :action => "update"
 
   # DELETE
-  get "/delete_calendar_entry/:id", :controller => "calendar_entries", :action => "destroy"
+  get "/delete_event/:id", :controller => "events", :action => "destroy"
+
+  # GO TO CALENDAR VIEW
+  get "/calendar", :controller => "events", :action => "calendar"
   #------------------------------
 
   # Routes for the Contact resource:

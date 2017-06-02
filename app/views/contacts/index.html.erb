@@ -9,19 +9,19 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Contact name</th>
-        <th>Contact email</th>
-        <th>Contact photo</th>
-        <th>User</th>
+        <th>User Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Photo</th>
         <th>Actions</th>
       </tr>
 
       <% @contacts.each do |contact| %>
       <tr>
-        <td><%= contact.contact_name %></td>
-        <td><%= contact.contact_email %></td>
-        <td><%= contact.contact_photo %></td>
-        <td><%= contact.user_id %></td>
+        <td><%= contact.child_id %></td>
+        <td><%= contact.user.name %></td>
+        <td><%= contact.user.email %></td>
+        <td><%= contact.user.photo %></td>
         <td>
           <a href="/contacts/<%= contact.id %>" class="btn btn-primary">Show</a>
           <a href="/contacts/<%= contact.id %>/edit" class="btn btn-warning">Edit</a>
