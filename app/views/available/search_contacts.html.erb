@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h3>Available Contacts</h3>
+</div>
+
+<form action="/available/results " method="post" class= "form-horizontal">
+  <!-- Hidden input for authenticity token to protect from forgery -->
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+  <div class="form-group">
+
+    <label for="start_time" class="col-sm-3 control-label"> Search for contacts available between</label>
+
+    <div class="col-sm-2">
+      <input type="datetime" id="start_time" name="start_time" placeholder="Start time" class="form-control" value="<%= @start_time %>">
+    </div>
+
+    <label for="end_time" class="col-sm-1 control-label">and</label>
+
+    <div class="col-sm-2">
+      <input type="datetime" id="end_time" name="end_time" placeholder="End time" class="form-control" value="<%=
+    @end_time %>">
+    </div>
+
+    <button class="btn btn-mid btn-success">Check</button>
+
+  </div>
+</form>

@@ -3,40 +3,39 @@
     Events
     <a href="/events/new" class="btn btn-lg btn-success">New Event</a>
   </h1>
-</div>
 
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Name</th>
-        <th>Creator</th>
-        <th>Start time</th>
-        <th>End time</th>
-        <th>Location</th>
-        <th>Location address</th>
-        <th>Is Private</th>
-        <th>Actions</th>
-      </tr>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped table-hover">
+          <tr>
+            <th>Name</th>
+            <th>Creator</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Location</th>
+            <th>Location address</th>
+            <th>Is Private</th>
+            <th>Actions</th>
+          </tr>
 
-      <% @events.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.user.name %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
-        <td><%= event.location %></td>
-        <td><%= event.location_address %></td>
-        <td><%= event.isprivate %></td>
-        <td>
-          <a href="/events/<%= event.id %>" class="btn btn-primary">Show</a>
-          <% if current_user.id == event.creator_id %>
-            <a href="/events/<%= event.id %>/edit" class="btn btn-warning">Edit</a>
-            <a href="/delete_event/<%= event.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% @events.each do |event| %>
+          <tr>
+            <td><%= event.name %></td>
+            <td><%= event.user.name %></td>
+            <td><%= event.start_time %></td>
+            <td><%= event.end_time %></td>
+            <td><%= event.location %></td>
+            <td><%= event.location_address %></td>
+            <td><%= event.isprivate %></td>
+            <td>
+              <a href="/events/<%= event.id %>" class="btn btn-primary">Show</a>
+              <% if current_user.id == event.creator_id %>
+              <a href="/events/<%= event.id %>/edit" class="btn btn-warning">Edit</a>
+              <a href="/delete_event/<%= event.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+              <% end %>
+            </td>
+          </tr>
           <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
+        </table>
+      </div>
+    </div>

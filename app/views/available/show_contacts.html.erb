@@ -1,0 +1,14 @@
+<div class="page-header">
+  <h1>
+    Available Contacts
+  </h1>
+</div>
+
+<h4>
+  Here's who is available between <%= @start_time %> and <%= @end_time %>:
+  <ul>
+    <% @available_contacts_list.each do |available_contact| %>
+    <li> <%= available_contact.user.name %> </li>
+    <% end %>
+  </ul>
+</h4>

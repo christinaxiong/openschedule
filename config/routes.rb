@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   get "/calendar", :controller => "events", :action => "calendar"
   #------------------------------
 
+  #Resources for the Available Contacts resource
+  get "/available", :controller => "available", :action => "search_contacts"
+  post "/available/results", :controller => "available", :action => "show_contacts"
+
   # Routes for the Contact resource:
   # CREATE
   get "/contacts/new", :controller => "contacts", :action => "new"
