@@ -5,7 +5,7 @@ class Event < ApplicationRecord
    :message => "Event has already been created!" }
   validates :end_time, :presence => true, :uniqueness => { :scope => :name,
    :message => "Event has already been created!" }
-
+  validates :name, :presence => true
   validate :check_datetimes
   def check_datetimes
     if start_time.present? && end_time.present? && start_time > end_time

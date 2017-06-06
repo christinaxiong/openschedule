@@ -1,12 +1,12 @@
-class AvailableController < ApplicationController
+class AvailableContactsController < ApplicationController
 
-  def search_contacts
+  def search
     @start_time=params[:start_time]
     @end_time = params[:end_time]
-    render("available/search_contacts.html.erb")
+    render("available_contacts/search.html.erb")
   end
 
-  def show_contacts
+  def show
     @start_time=params[:start_time]
     @end_time = params[:end_time]
     @available_contacts_list = []
@@ -24,6 +24,6 @@ class AvailableController < ApplicationController
         @available_contacts_list.push(contact)
       end
     end
-    render("available/show_contacts.html.erb")
+    render("available_contacts/show.html.erb")
   end
 end

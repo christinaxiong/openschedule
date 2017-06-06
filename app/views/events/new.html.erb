@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @event.errors.any? %>
-  <% @event.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @event.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -29,63 +29,76 @@
 
       <!-- Label and <i></i>nput for creator_id -->
       <!-- <div class="form-group">
-        <label for="creator_id" class="control-label">
-          Creator
-        </label> -->
+      <label for="creator_id" class="control-label">
+      Creator
+    </label> -->
 
-        <input type="hidden" id="creator_id" name="creator_id" placeholder="Creator" class="form-control" value="<%= current_user.id %>">
-      <!-- </div> -->
+    <input type="hidden" id="creator_id" name="creator_id" placeholder="Creator" class="form-control" value="<%= current_user.id %>">
+    <!-- </div> -->
 
-      <!-- Label and input for start_time -->
-      <div class="form-group">
-        <label for="start_time" class="control-label">
-          Start time
-        </label>
+    <!-- Label and input for start_time -->
+    <div class="form-group">
+      <label for="start_time" class="control-label">
+        Start time
+      </label>
 
-        <input type="datetime" id="start_time" name="start_time" placeholder="Start time" class="form-control" value="<%= @event.start_time %>">
+      <!-- <input type="datetime" id="start_time" name="start_time" placeholder="Start time" class="form-control" value="<%= @event.start_time %>">
+    </div> -->
+
+    <div class="form-group">
+      <div class='input-group date' id='datetimepicker1'>
+        <input type='text'  id="start_time" name="start_time" placeholder="Start time" class="form-control" value="<%= @event.start_time %>">
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
       </div>
+    </div>
+    <script type="text/javascript">
+    $(function () {
+      $('#datetimepicker1').datetimepicker({format: 'MM/DD/YYYY hh:mm:ss'});});
+    </script>
 
-      <!-- Label and input for end_time -->
-      <div class="form-group">
-        <label for="end_time" class="control-label">
-          End time
-        </label>
+    <!-- Label and input for end_time -->
+    <div class="form-group">
+      <label for="end_time" class="control-label">
+        End time
+      </label>
 
-        <input type="datetime" id="end_time" name="end_time" placeholder="End time" class="form-control" value="<%= @event.end_time %>">
-      </div>
+      <input type="datetime" id="end_time" name="end_time" placeholder="End time" class="form-control" value="<%= @event.end_time %>">
+    </div>
 
-      <!-- Label and input for location -->
-      <div class="form-group">
-        <label for="location" class="control-label">
-          Location
-        </label>
+    <!-- Label and input for location -->
+    <div class="form-group">
+      <label for="location" class="control-label">
+        Location
+      </label>
 
-        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @event.location %>">
-      </div>
+      <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @event.location %>">
+    </div>
 
-      <!-- Label and input for location_address -->
-      <div class="form-group">
-        <label for="location_address" class="control-label">
-          Location address
-        </label>
+    <!-- Label and input for location_address -->
+    <div class="form-group">
+      <label for="location_address" class="control-label">
+        Location address
+      </label>
 
-        <input type="text" id="location_address" name="location_address" placeholder="Location address" class="form-control" value="<%= @event.location_address %>">
-      </div>
+      <input type="text" id="location_address" name="location_address" placeholder="Location address" class="form-control" value="<%= @event.location_address %>">
+    </div>
 
-      <!-- Label and input for isprivate -->
-      <div class="form-group">
-        <label for="isprivate" class="control-label">
-          Is this event private?
-        </label>
+    <!-- Label and input for isprivate -->
+    <div class="form-group">
+      <label for="isprivate" class="control-label">
+        Is this event private?
+      </label>
 
-        <input type="checkbox" id="isprivate" name="isprivate" class="form-control" value="isprivate">
-      </div>
+      <input type="checkbox" id="isprivate" name="isprivate" class="form-control" value="isprivate">
+    </div>
 
-      <button class="btn btn-success">
-        Create Event
-      </button>
-      or
-      <a href="/events">Cancel</a>
-    </form>
-  </div>
+    <button class="btn btn-success">
+      Create Event
+    </button>
+    or
+    <a href="/events">Cancel</a>
+  </form>
+</div>
 </div>

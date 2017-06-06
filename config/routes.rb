@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   #------------------------------
 
   #Resources for the Available Contacts resource
-  get "/available", :controller => "available", :action => "search_contacts"
-  post "/available/results", :controller => "available", :action => "show_contacts"
+  get "/available_contacts/search", :controller => "available_contacts", :action => "search"
+  post "/available_contacts", :controller => "available_contacts", :action => "show"
 
   # Routes for the Contact resource:
   # CREATE

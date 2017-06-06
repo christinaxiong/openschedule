@@ -22,7 +22,6 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-
     render("events/new.html.erb")
   end
 
@@ -31,14 +30,14 @@ class EventsController < ApplicationController
 
     @event.name = params[:name]
     @event.creator_id = current_user.id
-    @event.start_time = params[:start_time]
+    date_format = "%m/%d/%Y %H:%M:%S"
+    @event.start_time = DateTime.strptime(params[:start_time], date_format).to_s
     @event.end_time = params[:end_time]
     @event.location = params[:location]
     @event.location_address = params[:location_address]
     @event.isprivate = params.key?(:isprivate)
 
     save_status = @event.save
-
     if save_status == true
       redirect_to("/events/#{@event.id}", :notice => "Event created successfully.")
     else
