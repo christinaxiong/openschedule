@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @event.errors.any? %>
-  <% @event.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @event.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -42,41 +42,63 @@
           Start time
         </label>
 
-        <input type="text" id="start_time" name="start_time" placeholder="Start time" class="form-control" value="<%= @event.start_time %>">
+        <div class="form-group">
+          <div class='input-group date' id='datetimepicker1'>
+            <input type='text'  id="start_time" name="start_time" placeholder="<%= @event.start_time %>" class="form-control" value="<%= @event.start_time %>">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+
+            <script type="text/javascript">
+            $(function () {
+              $('#datetimepicker1').datetimepicker({format: 'MM/DD/YYYY hh:mm:ss'});});
+              </script>
+            </div>
+          </div>
+
+          <!-- Label and input for end_time -->
+          <div class="form-group">
+            <label for="end_time" class="control-label">
+              End time
+            </label>
+
+            <div class="form-group">
+              <div class='input-group date' id='datetimepicker2'>
+                <input type='text'  id="end_time" name="end_time" placeholder="<%= @event.end_time %>" class="form-control" value="<%= @event.end_time %>">
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+            <script type="text/javascript">
+            $(function () {
+              $('#datetimepicker2').datetimepicker({format: 'MM/DD/YYYY hh:mm:ss'});});
+              </script>
+            </div>
+
+            <!-- Label and input for location -->
+            <div class="form-group">
+              <label for="location" class="control-label">
+                Location
+              </label>
+
+              <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @event.location %>">
+            </div>
+
+            <!-- Label and input for location_address -->
+            <div class="form-group">
+              <label for="location_address" class="control-label">
+                Location address
+              </label>
+
+              <input type="text" id="location_address" name="location_address" placeholder="Location address" class="form-control" value="<%= @event.location_address %>">
+            </div>
+
+            <button class="btn btn-warning">
+              Update Event
+            </button>
+            or
+            <a href="/events/<%= @event.id %>">Cancel</a>
+          </form>
+        </div>
       </div>
-
-      <!-- Label and input for end_time -->
-      <div class="form-group">
-        <label for="end_time" class="control-label">
-          End time
-        </label>
-
-        <input type="text" id="end_time" name="end_time" placeholder="End time" class="form-control" value="<%= @event.end_time %>">
-      </div>
-
-      <!-- Label and input for location -->
-      <div class="form-group">
-        <label for="location" class="control-label">
-          Location
-        </label>
-
-        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @event.location %>">
-      </div>
-
-      <!-- Label and input for location_address -->
-      <div class="form-group">
-        <label for="location_address" class="control-label">
-          Location address
-        </label>
-
-        <input type="text" id="location_address" name="location_address" placeholder="Location address" class="form-control" value="<%= @event.location_address %>">
-      </div>
-
-      <button class="btn btn-warning">
-        Update Event
-      </button>
-      or
-      <a href="/events/<%= @event.id %>">Cancel</a>
-    </form>
-  </div>
-</div>

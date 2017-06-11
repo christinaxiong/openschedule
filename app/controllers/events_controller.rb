@@ -32,7 +32,7 @@ class EventsController < ApplicationController
     @event.creator_id = current_user.id
     date_format = "%m/%d/%Y %H:%M:%S"
     @event.start_time = DateTime.strptime(params[:start_time], date_format).to_s
-    @event.end_time = params[:end_time]
+    @event.end_time = DateTime.strptime(params[:end_time], date_format).to_s
     @event.location = params[:location]
     @event.location_address = params[:location_address]
     @event.isprivate = params.key?(:isprivate)
@@ -63,15 +63,16 @@ class EventsController < ApplicationController
     else
       @event.name = params[:name]
       @event.creator_id = params[:creator_id]
-      @event.start_time = params[:start_time]
-      @event.end_time = params[:end_time]
+      date_format = "%m/%d/%Y %H:%M:%S"
+      @event.start_time = DateTime.strptime(params[:start_time], date_format).to_s
+      @event.end_time = DateTime.strptime(params[:end_time], date_format).to_s
       @event.location = params[:location]
       @event.location_address = params[:location_address]
 
       save_status = @event.save
 
       if save_status == true
-        redirect_to("/events/#{@event.id}", :notice => "Event updated successfully.")
+        redirect_to("/", :notice => "Event updated successfully.")
       else
         render("events/edit.html.erb")
       end

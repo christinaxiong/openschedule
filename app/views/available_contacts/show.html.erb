@@ -5,7 +5,7 @@
 </div>
 
 <h4>
-  Here's who is available between <%= @start_time %> and <%= @end_time %>:
+  Here's who is available between <%= params[:start_time] %> and <%= params[:end_time]%>:
   <ul>
     <% @available_contacts_list.each do |available_contact| %>
     <li> <%= available_contact.user.name %> </li>
