@@ -28,13 +28,13 @@
       </div>
 
       <!-- Label and input for creator_id -->
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="creator_id" class="control-label">
           Creator
-        </label>
+        </label> -->
 
-        <input type="text" id="creator_id" name="creator_id" placeholder="Creator" class="form-control" value="<%= @event.creator_id %>">
-      </div>
+        <input type="hidden" id="creator_id" name="creator_id" placeholder="Creator" class="form-control" value="<%= @event.creator_id %>">
+      <!-- </div> -->
 
       <!-- Label and input for start_time -->
       <div class="form-group">
@@ -51,7 +51,7 @@
 
             <script type="text/javascript">
             $(function () {
-              $('#datetimepicker1').datetimepicker({format: 'MM/DD/YYYY hh:mm:ss'});});
+              $('#datetimepicker1').datetimepicker({format: 'MM/DD/YYYY hh:mm A'});});
               </script>
             </div>
           </div>
@@ -72,7 +72,7 @@
             </div>
             <script type="text/javascript">
             $(function () {
-              $('#datetimepicker2').datetimepicker({format: 'MM/DD/YYYY hh:mm:ss'});});
+              $('#datetimepicker2').datetimepicker({format: 'MM/DD/YYYY hh:mm A'});});
               </script>
             </div>
 
@@ -92,6 +92,15 @@
               </label>
 
               <input type="text" id="location_address" name="location_address" placeholder="Location address" class="form-control" value="<%= @event.location_address %>">
+            </div>
+
+            <!-- Label and input for isprivate -->
+            <div class="form-group">
+              <label for="isprivate" class="control-label">
+                Is this event private?
+              </label>
+
+              <input type="checkbox" id="isprivate" name="isprivate" class="form-control" value="isprivate">
             </div>
 
             <button class="btn btn-warning">

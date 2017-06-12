@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #Routes for homepage:
-  get "/", :controller => "events", :action => "index"
+  get "/", :controller => "events", :action => "calendar"
 
   # Routes for the Event resource:
   # CREATE

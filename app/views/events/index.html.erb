@@ -8,25 +8,6 @@
     <!-- Hidden input for authenticity token to protect from forgery -->
     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-    <!-- <div class="form-group">
-
-    <label for="start_time" class="col-sm-3 control-label"> Search for contacts available between</label>
-
-    <div class="col-sm-2">
-    <input type="datetime" id="start_time" name="start_time" placeholder="Start time" class="form-control" value="<%= @start_time %>">
-  </div>
-
-  <label for="end_time" class="col-sm-1 control-label">and</label>
-
-  <div class="col-sm-2">
-  <input type="datetime" id="end_time" name="end_time" placeholder="End time" class="form-control" value="<%=
-  @end_time %>">
-</div>
-
-<button class="btn btn-mid btn-success">Check</button>
-</form>
-</div> -->
-
 <div class="container">
 
   <div class='col-md-5'>
@@ -42,7 +23,7 @@
       </div>
       <script type="text/javascript">
       $(function () {
-        $('#datetimepicker6').datetimepicker({format: 'MM/DD/YYYY hh:mm:ss'});});
+        $('#datetimepicker6').datetimepicker({format: 'MM/DD/YYYY hh:mm A'});});
         </script>
       </div>
     </div>
@@ -60,7 +41,7 @@
         </div>
         <script type="text/javascript">
         $(function () {
-          $('#datetimepicker7').datetimepicker({format: 'MM/DD/YYYY hh:mm:ss'});});
+          $('#datetimepicker7').datetimepicker({format: 'MM/DD/YYYY hh:mm A'});});
           </script>
         </div>
       </div>
